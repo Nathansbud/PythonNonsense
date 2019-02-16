@@ -14,7 +14,6 @@ block_list = [
 
 
 def main():
-    print(time.localtime())
     os.chdir("/private/etc")
     hosts = open("/private/etc/hosts", "r")
 
@@ -39,7 +38,7 @@ def main():
     hosts.close()
     hosts = open("/private/etc/hosts", "a")
 
-    if (time.localtime().tm_hour >= 16 or time.localtime().tm_hour <= 8) or time.localtime().tm_day >= 5:
+    if (time.localtime().tm_hour > 15 or time.localtime().tm_hour < 8) or time.localtime().tm_wday >= 5:
         for b in block_list:
             hosts.write("127.0.0.1\t" + b + "\n")
         os.system("dscacheutil -flushcache")

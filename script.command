@@ -2,7 +2,6 @@
 
 import os
 import time
-import sys
 
 block_list = [
     "www.youtube.com",

@@ -1,14 +1,15 @@
-#!/usr/bin/python
+#!/usr/local/opt/python/bin/python3.7
 
 import os
 import time
+import sys
 
 block_list = [
     "www.youtube.com",
     "www.reddit.com",
     "www.instagram.com",
     "www.twitter.com",
-    "www.myspace.com"
+    "www.tetrisfriends.com"
 ]
 
 
@@ -34,15 +35,18 @@ def main():
             hosts.write(line)
             if line.replace("\n", "") == "##BLOCK##":
                 passed = True
-    hosts.close()
-    hosts = open("/private/etc/hosts", "a")
 
-    if (time.localtime().tm_hour > 15 or time.localtime().tm_hour < 8) or time.localtime().tm_wday >= 5:
+    if sys.argv.__len__() > 1:
+        hosts.close()
+        hosts = open("/private/etc/hosts", "a")
         for b in block_list:
             hosts.write("127.0.0.1\t" + b + "\n")
         os.system("dscacheutil -flushcache")
 
-    hosts.close()
+        hosts.close()
+        print("Sites blocked!")
+    else:
+        print("Sites unblocked!")
 
 if __name__ == "__main__":
     main()

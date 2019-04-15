@@ -13,7 +13,7 @@ block_list = [
 ]
 
 
-def main():
+def block_sites():
     os.chdir("/private/etc")
     hosts = open("/private/etc/hosts", "r")
 
@@ -49,5 +49,5 @@ def main():
         print("Sites unblocked!")
 
 if __name__ == "__main__":
-    main()
+    block_sites()
     pass

@@ -36,17 +36,15 @@ def block_sites():
             if line.replace("\n", "") == "##BLOCK##":
                 passed = True
 
-    if sys.argv.__len__() > 1:
-        hosts.close()
-        hosts = open("/private/etc/hosts", "a")
-        for b in block_list:
-            hosts.write("127.0.0.1\t" + b + "\n")
-        os.system("dscacheutil -flushcache")
+    hosts.close()
+    hosts = open("/private/etc/hosts", "a")
+    for b in block_list:
+        hosts.write("127.0.0.1\t" + b + "\n")
+    os.system("dscacheutil -flushcache")
 
-        hosts.close()
-        print("Sites blocked!")
-    else:
-        print("Sites unblocked!")
+    hosts.close()
+    print("Sites blocked!")
+
 
 if __name__ == "__main__":
     block_sites()

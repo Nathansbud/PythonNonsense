@@ -4,12 +4,19 @@ import os
 import time
 import sys
 
+strict_block = False
+
 block_list = [
     "www.youtube.com",
     "www.reddit.com",
     "www.instagram.com",
     "www.twitter.com",
     "www.tetrisfriends.com"
+]
+
+strict_block_list = [
+    "www.facebook.com",
+    "www.messenger.com"
 ]
 
 
@@ -38,8 +45,12 @@ def block_sites():
 
     hosts.close()
     hosts = open("/private/etc/hosts", "a")
-    for b in block_list:
-        hosts.write("127.0.0.1\t" + b + "\n")
+    if strict_block:
+        for b in block_list + strict_block_list:
+            hosts.write("127.0.0.1\t" + b + "\n")
+    else:
+        for b in block_list:
+            hosts.write("127.0.0.1\t" + b + "\n")
     os.system("dscacheutil -flushcache")
 
     hosts.close()

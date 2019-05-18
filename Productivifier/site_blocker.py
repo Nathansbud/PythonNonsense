@@ -4,7 +4,7 @@ import os
 import time
 import sys
 
-strict_block = False
+strict_block = True
 
 block_list = [
     "www.youtube.com",

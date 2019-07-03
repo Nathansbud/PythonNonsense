@@ -12,9 +12,9 @@ bandcamp_log = os.path.join(dirpath, "BandcampLog.txt")
 soulseek_log = os.path.join(dirpath, "SoulSeekLog.txt")
 
 with open(soulseek_log, 'r+') as ss:
-    folder_entries = [file.strip() for file in os.listdir(soulseek) if file != '.DS_Store' and file.lower() != "untitled folder" and not os.path.isfile(file)]
+    folder_entries = [file.strip() for file in os.listdir(soulseek) if file != '.DS_Store' and file.lower() != "untitled folder" and not os.path.isfile(file) and not file.endswith(".mp3") and not file.endswith(".m4a") and not file.endswith(".mobi") and not file.endswith(".epub")]
     file_entries = [line.strip() for line in ss]
-
+    
     for entry in (set(folder_entries) - set(file_entries)):
         file_entries.append(entry)
 

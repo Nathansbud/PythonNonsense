@@ -7,11 +7,11 @@ import sys
 strict_block = True
 
 block_list = [
-    "www.youtube.com",
+   # "www.youtube.com",
     "www.reddit.com",
-    "www.instagram.com",
-    "www.twitter.com",
-    "www.tetrisfriends.com"
+   # "www.instagram.com",
+   # "www.twitter.com",
+   # "www.tetrisfriends.com"
 ]
 
 strict_block_list = [

@@ -2,7 +2,7 @@
 
 import os
 
-dirpath = os.path.join(os.path.sep + "Users", "zackamiton", "Documents", "Torrents")
+dirpath = os.path.join(os.path.sep + "Users", "zackamiton", "Torrents")
 
 bandcamp = os.path.join(dirpath, "Bandcamp Downloads")
 soulseek = os.path.join(dirpath, "SoulSeek Downloads")

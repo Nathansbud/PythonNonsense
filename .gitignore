@@ -5,3 +5,7 @@ venv/
 *.err
 
 *.log
+
+Verycross/staff/*
+Verycross/students/*
+Verycross/*.json

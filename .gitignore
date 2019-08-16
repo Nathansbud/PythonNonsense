@@ -9,3 +9,5 @@ venv/
 Verycross/staff/*
 Verycross/students/*
 Verycross/*.json
+
+credentials/

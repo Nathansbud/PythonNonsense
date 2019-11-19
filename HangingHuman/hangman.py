@@ -14,7 +14,7 @@ def play():
 
     print("Welcome to Hangman! Your word has been randomly generated...")
     word_path = "/usr/share/dict/web2"
-    word = random.choice(open(word_path).readlines()).strip()
+    word = random.choice(open(word_path).readlines()).strip().lower()
     guess = " " * len(word)
     display = ""
     guessed = []

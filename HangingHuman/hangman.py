@@ -64,7 +64,10 @@ def play():
 if __name__ == '__main__':
     playing = True
     while playing:
-        playing = play()
-
+        try:
+            playing = play()
+        except KeyboardInterrupt:
+            print()
+            exit(0)
 
 

@@ -2,23 +2,29 @@
 import platform
 import random
 
+win = 0
+loss = 0
+
 def find(s, ch):
     return [i for i, ltr in enumerate(s) if ltr == ch]
 
 def play():
+    global win
+    global loss
+
     print("Welcome to Hangman! Your word has been randomly generated...")
     word_path = "/usr/share/dict/web2"
     word = random.choice(open(word_path).readlines()).strip()
     guess = " " * len(word)
     display = ""
     guessed = []
-    lives = 4
+    lives = 6
 
     while not guess == word and lives > 0:
         for c in guess:
             if c == " ": display += "_ "
             else: display += c + " "
-        print(f"Current Guess: {display.rstrip()} | Lives: {lives} | Guessed: {', '.join(guessed)}" )
+        print(f"Current Guess: {display.rstrip()} | Lives: {lives} | W-L: {win}-{loss} | Guessed: {', '.join(guessed)}" )
         letter = input("Please input a letter: ").lower().strip()
         if letter == 'quit':
             exit(0)
@@ -38,6 +44,10 @@ def play():
             guessed.append(letter)
         else: print("UWU")
         display = ""
+    if lives > 0:
+        win += 1
+    else:
+        loss += 1
     print(f"You {'win' if lives > 0 else 'lose'}! The word was '{word}'!")
     replay_options = ['yes', 'y']
     quit_options = ['no', 'n', 'quit']

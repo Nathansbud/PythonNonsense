@@ -11,3 +11,5 @@ Verycross/*.json
 
 credentials/
 creds/
+
+DreamBackup/data/old.txt

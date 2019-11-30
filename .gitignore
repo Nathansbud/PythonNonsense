@@ -13,3 +13,7 @@ credentials/
 creds/
 
 DreamBackup/data/old.txt
+
+Ballerina/video/*
+Ballerina/audio/*
+Ballerina/output/*

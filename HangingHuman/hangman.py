@@ -1,24 +1,34 @@
 #!/usr/local/bin/python3.7
-import platform
+
+from sys import argv
 import random
+import trash
 
 win = 0
 loss = 0
+max_lives = 6
 
 def find(s, ch):
     return [i for i, ltr in enumerate(s) if ltr == ch]
 
-def play():
+def play(word=None):
     global win
     global loss
+    global max_lives
+    global w
+    w = None
 
-    print("Welcome to Hangman! Your word has been randomly generated...")
-    word_path = "/usr/share/dict/web2"
-    word = random.choice(open(word_path).readlines()).strip().lower()
+    if word:
+        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    else:
+        word_path = "/usr/share/dict/web2"
+        word = random.choice(open(word_path).readlines()).strip().lower()
+    print("Welcome to Hangman! Your word has been chosen...")
+
     guess = " " * len(word)
     display = ""
     guessed = []
-    lives = 6
+    lives = max_lives
 
     while not guess == word and lives > 0:
         for c in guess:
@@ -62,10 +72,28 @@ def play():
 
 
 if __name__ == '__main__':
+    w = None
+    if argv[1:]:
+        args = [arg.lower() for arg in argv[1:]]
+        if '-l' in args:
+            try:
+                max_lives = int(args[args.index('-l')+1])
+            except IndexError:
+                print("Argument -l must be followed by a number!")
+            except ValueError:
+                print("Argument -l must be followed by a number!")
+        if '-w' in args:
+            try:
+                w = args[args.index('-w')+1]
+            except IndexError:
+                print("Argument -w must be followed by a word!")
+            if w and not str.isalpha(w):
+                w = None
+                print("Word must be alphabetic!")
     playing = True
     while playing:
         try:
-            playing = play()
+            playing = play(w)
         except KeyboardInterrupt:
             print()
             exit(0)

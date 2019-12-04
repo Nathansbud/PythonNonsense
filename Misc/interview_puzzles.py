@@ -1,3 +1,4 @@
+#not finished, 2 lazy to tbh, i did them in person okay!!!
 class Cup:
     def __init__(self, capacity):
         self.capacity = capacity
@@ -48,8 +49,6 @@ def compute_clock_angle(time):
             print(hour, minutes)
         except ValueError:
             print("Error! Must be a real time!")
-
-
 
 
 compute_clock_angle("23:00")

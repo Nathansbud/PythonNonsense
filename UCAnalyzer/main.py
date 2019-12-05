@@ -37,7 +37,14 @@ for row in uc_data:
     race = row[3]
     resident = True if row[4] == "Yes" else False
     major = row[5]
-    income = row[6]
+    if row[6] == "not sure":
+        income = None
+    elif row[6].startswith("over"):
+        income = 1000001
+    else:
+        dollar_replace = row[6].replace("$", "").replace(",", "")
+        income = [int(d) for d in dollar_replace.split("-")]
+
     sat = int(row[7]) if row[7] else None
     act = int(row[8]) if row[8] else None
     wgpa = float(row[9]) if row[9] else None
@@ -70,6 +77,47 @@ for row in uc_data:
 
 
 if __name__ == '__main__':
+    wealthy = []
     for s in students:
-        print(s.gender)
-    pass
+        if s.income and isinstance(s.income, list) and s.income[1] <= 150000:
+            wealthy.append(s)
+        elif s.income:
+            wealthy.append(s)
+
+
+    resident = {'resident':0, 'non-resident':0}
+    sats = {}
+    acts = {}
+
+    for s in wealthy:
+        if s.resident: resident['resident'] += 1
+        else: resident['non-resident'] += 1
+
+        if s.sat:
+            if s.race in sats:
+                sats[s.race]['score'] += s.sat
+                sats[s.race]['count'] += 1
+
+            else:
+                sats[s.race] = {'score':s.sat, 'count':1, 'average':0}
+        if s.act:
+            if s.race in acts:
+                acts[s.race]['score'] += s.act
+                acts[s.race]['count'] += 1
+            else:
+                acts[s.race] = {'score':s.act, 'count':1, 'average':0}
+
+    for race in sats:
+        sats[race]['average'] = sats[race]['score'] / sats[race]['count']
+
+    for race in acts:
+        acts[race]['average'] = acts[race]['score'] / acts[race]['count']
+
+    for race in sats:
+        if sats[race]['count'] > 5:
+            print(f'{race}: {sats[race]["average"]} ({sats[race]["count"]})')
+
+    for race in acts:
+        if acts[race]['count'] > 5:
+            print(f'{race}: {acts[race]["average"]} ({acts[race]["count"]})')
+

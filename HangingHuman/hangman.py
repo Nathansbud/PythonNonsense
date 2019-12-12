@@ -1,8 +1,5 @@
-#!/usr/local/bin/python3.7
-
 from sys import argv
 import random
-import trash
 
 win = 0
 loss = 0
@@ -68,8 +65,6 @@ def play(word=None):
     if choice in replay_options:
         return True
     return False
-
-
 
 if __name__ == '__main__':
     w = None

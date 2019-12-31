@@ -1,3 +1,5 @@
+#!/usr/local/bin/python3.7
+
 from sys import argv
 import random
 
@@ -16,7 +18,7 @@ def play(word=None):
     w = None
 
     if word:
-        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     else:
         word_path = "/usr/share/dict/web2"
         word = random.choice(open(word_path).readlines()).strip().lower()

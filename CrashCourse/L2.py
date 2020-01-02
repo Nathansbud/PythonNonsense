@@ -92,21 +92,29 @@ In the above statement, you can see our components at work:
 In Python, TABS act as the means of breaking up chunks of code. Notice that the print statement is on the next line, and tabbed in by one. This is not just a style thing--this is how Python knows you are inside an if/else. Or, more formally, a "block" of code
 
 Let's combine these things to have a quick final objective: a fahrenheit -> celsius converter.
+
+For this, I'm going to break out of block comment and leave some notes NEXT to code. I'm also going to introduce a simple new keyword, input("string"), which asks for user input. Type in a temperature value when asked by the console and hit enter.
+
+Celsius -> Fahrenheit: 9/5*TEMPERATURE + 32
+Fahrenheit -> Celsius: 5/9*(TEMPERATURE - 32)
+pass is a keyword which essentially tells Python, "hey, there will be code here, but just like, not now." It does nothing, but you NEED code after your if/else statements
+
+Also, I haven't mentioned up until this point, but all math operations work fine. So: 
+
+x = 2
+print(x * 2) #4
+print((x / 10) + 2) #2.2
+
+All would work fine.
+
 """
 #Objective: Fahrenheit-Celsius Converter
-#For this, I'm going to break out of block comment and leave some notes NEXT to code. I'm also going to introduce a simple new keyword, input("string"), which asks for user input. Type in a temperature value when asked by the console and hit enter.
-
-#Celsius -> Fahrenheit: 9/5*TEMPERATURE + 32
-#Fahrenheit -> Celsius: 5/9*(TEMPERATURE - 32)
 
 #Let's make this a 2-way converter...we want a way to check if our code is FAHRENHEIT or CELSIUS to see which formula to use
 is_celsius = True #Change this from True to False to test converting both ways
 temperature = input("Input your temperature: ")
 if is_celsius is True:
-    #pass is a keyword which essentially tells Python, "hey, there will be code here, but just like, not now." It does nothing, but you NEED code after your if/else statements
-
     #Put a print statement here that will convert your temperature to fahrenheit, as in this case, the temperature is given in celsius
-
     pass
 else:
     #Put a print statement here that will convert your temperature to celsius, as in this case, the temperature is given in fahrenheit

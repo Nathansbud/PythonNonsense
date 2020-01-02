@@ -1,7 +1,7 @@
 """
-Lesson 2: Variables & Conditionals
+[Lesson 2: Variables & Conditionals]
 
-Welcome to Lesson 2 of Zack Teaches Programming, where we will cover variables and conditionals. But first, a little bit of terminology.
+Welcome to Lesson 2 of Zack Teaches Programming, where we will cover variables and conditionals.
 
 In CS, as in math, variables are the meat and potatoes of the work you will do.
 

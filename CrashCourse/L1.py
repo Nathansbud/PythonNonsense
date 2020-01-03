@@ -22,7 +22,7 @@ See? Nothing happened!
 
 Of course, you don't always need a 40 line introduction to explain your code. For this, you use a single line comment. In Python, this comment is far more typical, and denoted by a hash symbol: #
 """
-#Like so! This line will also not run not run!
+#Like so! This line will also not run
 """
 More common than a long explanation, you "comment out" a line of code that you want to temporarily NOT run. For example, this is a line of code which has been commented out. Try removing the comment in front of it out to see what happens.
 """

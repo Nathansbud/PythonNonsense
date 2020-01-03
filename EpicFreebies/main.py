@@ -6,7 +6,7 @@ import os
 import json
 
 
-with open(os.path.dirname(__file__) + os.sep + "credentials" + os.sep + "credentials.json") as jf:
+with open(os.path.dirname(__file__) + os.sep + "credentials" + os.sep + "creds.json") as jf:
     creds = json.load(jf)
 
 def make_chrome_browser(path_to, run_headless=False, quit_on_done=False):

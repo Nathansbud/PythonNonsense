@@ -131,7 +131,3 @@ And thus concludes lesson 2!
 
 
 
-
-
-
-

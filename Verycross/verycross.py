@@ -100,4 +100,3 @@ def trigger_script():
 
 if __name__ == "__main__":
     trigger_script()
-    pass

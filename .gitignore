@@ -11,9 +11,12 @@ Verycross/*.json
 
 credentials/
 creds/
+creds.json
+credentials.json
 
 DreamBackup/data/old.txt
 
 Ballerina/video/*
 Ballerina/audio/*
 Ballerina/output/*
+CollegeStatus/schools.json

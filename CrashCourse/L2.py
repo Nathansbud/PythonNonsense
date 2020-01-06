@@ -109,6 +109,7 @@ All would work fine.
 
 """
 #Objective: Fahrenheit-Celsius Converter
+#Note: Go on to the next message after running the code once; something will go wrong...
 
 #Let's make this a 2-way converter...we want a way to check if our code is FAHRENHEIT or CELSIUS to see which formula to use
 is_celsius = True #Change this from True to False to test converting both ways

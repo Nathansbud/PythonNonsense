@@ -4,11 +4,13 @@
 
 ## "Finished" Projects
 - [Ballerina](Ballerina): Script to make me dance!
+- [CollegeStatus](CollegeStatus): Selenium script to grab application status info for the colleges I've applied to
 - [ColorScraper](ColorScraper): Quick thing to scrape colors off of Wikipedia
+- [CrashCourse](CrashCourse): Shoddy "Intro to Python" lessons made for [Park](https://github.com/DepressoEspresso15)
 - [DreamBackup](DreamBackup): Tool to automatically back up my Notes to Google Docs
 - [EpicFreebies](EpicFreebies): Tool to redeem free games from Epic Games rather than, y'know, clicking 3 buttons
 - [HangingHuman](HangingHuman): It's...hangman, bro.
-- [MoniTorrent](MoniTorrent): launchd tool to monitor downloaded music and update log file 
+- [MoniTorrent](MoniTorrent): Launchd tool to monitor downloaded music and update log file 
 - [Productivifier](Productivifier): Attempt at blocking sites/failed attempt at generally being more productive
 - [Textual](Textual): Miscellaneous silly text modifiers
 - [UCAnalyzer](UCAnalyzer): Rudimentary analyzer of UC data from /r/A2C

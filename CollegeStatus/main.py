@@ -15,7 +15,7 @@ def make_chrome_browser(run_headless=False, quit_on_done=False):
     if quit_on_done: atexit.register(b.quit)
     return b
 
-browser = make_chrome_browser(run_headless=False, quit_on_done=True)
+browser = make_chrome_browser(run_headless=True, quit_on_done=True)
 
 with open(os.path.join(os.path.dirname(__file__), "credentials.json")) as cf, open(os.path.join(os.path.dirname(__file__), "schools.json")) as sf:
     creds = json.load(cf)

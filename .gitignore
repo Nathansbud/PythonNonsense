@@ -20,3 +20,5 @@ Ballerina/video/*
 Ballerina/audio/*
 Ballerina/output/*
 CollegeStatus/schools.json
+
+FEPCrawler/output/

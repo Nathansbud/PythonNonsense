@@ -27,13 +27,11 @@ Of course, you don't always need a 40 line introduction to explain your code. Fo
 More common than a long explanation, you "comment out" a line of code that you want to temporarily NOT run. For example, this is a line of code which has been commented out. Try removing the comment in front of it out to see what happens.
 """
 #Objective: Make the following print statement work correctly
-#print("You are super cool")
+# print("You are super cool")
 """
 The above line introduced the print statement—this is the most common way to output text to the Python "console," which is where all output statements go. Try making your own print statement down below! If you want a real introduction to programming, the true first thing most programmers do ('tis tradition) it to print "Hello, World!" So, take a stab at it!
 """
 #Objective: Make "Hello, World!" print to the console
-
-
 
 """
 And with that, you're officially a programmer!

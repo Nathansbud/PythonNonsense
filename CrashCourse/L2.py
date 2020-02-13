@@ -6,8 +6,8 @@ Welcome to Lesson 2 of Zack Teaches Programming, where we will cover variables a
 In CS, as in math, variables are the meat and potatoes of the work you will do.
 
 In Python (at the level that you need to concern yourself with) variables have 3 components: Name, Value, and Type
-    - The name of a variable is, well, its name. Think X in math...this is what you use to refer to the variable. "Defining" is the act of creating a variable is called "defining" a variable
-    - The value of a variable is what it actually represents (i.e. 10, "Park"). "Assigning" act of giving a variable a value is called "assigning" a value to that variable.
+    - The name of a variable is, well, its name. Think X in math...this is what you use to refer to the variable. "Defining" is the act of creating a variable.
+    - The value of a variable is what it actually represents (i.e. 10, "Park"). "Assigning" is the act of giving a variable a value.
     - The type of a variable is what it "means"--is it a whole number (integer)? A word or sentence (string)? A list of decimals (float array)? Python is what is known as a "dynamically typed" language--more on this in a second.
 
 For now, let us define and assign a value to our very first variable. In Python, this has 3 components:
@@ -19,12 +19,11 @@ For example, creating a variable then printing it might look like:
 
     name = "Zack Amiton"
     age = 17
-    print(username, age)
+    print(name, age)
 
-This would, presumably, print "Alex Park" and 10 to the console. You REFER to a variable by its NAME, which passes its VALUE to whatever you are using it for. Names cannot start with numbers, and are case sensitive (x is not equal to X); otherwise, they can be whatever you want.
+This would, presumably, print "Zack Amiton" and 17 to the console. You REFER to a variable by its NAME, which passes its VALUE to whatever you are using it for. Names cannot start with numbers, and are case sensitive (x is not equal to X); otherwise, they can be whatever you want.
 """
 #Objective: Define your own name and age variable, and print them to the console
-
 
 
 """
@@ -54,8 +53,6 @@ In Python, type is not linked to a variable—-name is CURRENTLY a string, but i
 """
 #Objective: Try changing your name/age to something else, and print it
 
-
-
 """
 Following along? Cool. You've gotten your name, your age...but let's see if you are, in fact, an adult. How else will we determine whether to let you into a bar or...god forbid...watch content you must be an adult for (which nobody has ever lied on).
 
@@ -63,12 +60,12 @@ For this, we must bring return to our friend the boolean (mentioned above), and 
 
 A conditional, by nature, is a question--you are asking the program to evaluate an "expression" and see whether it is True or False. This is known as a "logical expression" or a "boolean expression," and for this we need 3 new keywords: if, else, and elif.
 
-Let's say you, being you, want to enter a bar which...I dunno, exists as a program. I, the bouncer, have to scan this patron's age, asking the question: are you older than 21? Or, to define the problem more concretely: is your age ≥ 21? IF age IS ≥ 21, THEN I would probably let you in...ELSE if you aren't, THEN I would probably yell at you to scram. And, since I'm a concerned bouncer, if you're under the age of 10, I'm get REAL mad and call your parents
+Let's say you, being you, want to enter a bar which...I dunno, exists as a program. I, the bouncer, have to scan this patron's age, asking the question: are you older than 21? Or, to define the problem more concretely: is your age ≥ 21? IF age IS ≥ 21, THEN I would probably let you in...ELSE if you aren't, THEN I would probably yell at you to scram. And, since I'm a concerned bouncer, if you're under the age of 10, I'll get REAL mad and call your parents
 
 See what I did there? How subtle...let's translate that statement into code.
 """
 #Objective: Comment out and run the following code; what do you think would happen?
-"""
+
 age = 20
 if age >= 21:
     print("You are, in fact, an adult! Welcome inside...")
@@ -76,7 +73,7 @@ elif age < 10:
     print("Now you've done it, I'm gonna call your parents!")
 else:
     print("You aren't drinking age, scram!")
-"""
+
 
 """
 In the above statement, you can see our components at work: 
@@ -112,14 +109,14 @@ All would work fine.
 #Note: Go on to the next message after running the code once; something will go wrong...
 
 #Let's make this a 2-way converter...we want a way to check if our code is FAHRENHEIT or CELSIUS to see which formula to use
-is_celsius = True #Change this from True to False to test converting both ways
-temperature = input("Input your temperature: ")
-if is_celsius is True:
-    #Put a print statement here that will convert your temperature to fahrenheit, as in this case, the temperature is given in celsius
-    pass
-else:
-    #Put a print statement here that will convert your temperature to celsius, as in this case, the temperature is given in fahrenheit
-    pass
+# is_celsius = True #Change this from True to False to test converting both ways
+# temperature = input("Input your temperature: ")
+# if is_celsius is True:
+#     #Put a print statement here that will convert your temperature to fahrenheit, as in this case, the temperature is given in celsius
+#     pass
+# else:
+#     #Put a print statement here that will convert your temperature to celsius, as in this case, the temperature is given in fahrenheit
+#     pass
 
 #To test your output is working correctly, try the input 42 from Celsius -> Fahrenheit (which should give 107.6), and 42 from Celsius to Fahrenheit (which should give 5.55555...)
 

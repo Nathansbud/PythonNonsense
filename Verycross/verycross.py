@@ -99,4 +99,5 @@ def trigger_script():
         setup_applescript(show_results.format(get_grade(td['output'][34:].strip()) + " has " + str(studentCount) + " students."))
 
 if __name__ == "__main__":
-    trigger_script()
+    # trigger_script()
+    load_students()

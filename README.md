@@ -9,6 +9,7 @@
 - [CrashCourse](CrashCourse): Shoddy "Intro to Python" lessons made for [Park](https://github.com/DepressoEspresso15)
 - [DreamBackup](DreamBackup): Tool to automatically back up my Notes to Google Docs
 - [EpicFreebies](EpicFreebies): Tool to redeem free games from Epic Games rather than, y'know, clicking 3 buttons
+- [Faudearly](Faudearly): Bad Michael Faudet poetry generator
 - [HangingHuman](HangingHuman): It's...hangman, bro.
 - [MoniTorrent](MoniTorrent): Launchd tool to monitor downloaded music and update log file 
 - [Productivifier](Productivifier): Attempt at blocking sites/failed attempt at generally being more productive

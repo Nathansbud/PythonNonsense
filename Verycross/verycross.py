@@ -3,6 +3,64 @@ import json
 import urllib.request
 import os
 from subprocess import Popen, PIPE
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+from enum import Enum
+import re
+
+
+class Group(Enum):
+    STUDENTS = ("Students", 1)
+    HOUSEHOLDS = ("Households", 2)
+    STAFF = ("Staff", 4)
+    PK3 = ("Pre-K3", 5)
+    PK4 = ("Pre-K4", 6)
+    KG = ("Kindergarten", 7)
+    ONE = ("Grade 1", 8)
+    TWO = ("Grade 2", 9)
+    THREE = ("Grade 3", 10)
+    FOUR = ("Grade 4", 11)
+    FIVE = ("Grade 5", 12)
+    SIX = ("Grade 6", 13)
+    SEVEN = ("Grade 7", 14)
+    EIGHT = ("Grade 8", 15)
+    NINE = ("Grade 9", 16)
+    TEN = ("Grade 10", 17)
+    ELEVEN = ("Grade 11", 18)
+    TWELVE = ("Grade 12", 19)
+    #20-34 = Households
+
+    def __init__(self, title, directory):
+        self.title = title
+        self.directory = directory
+
+def browser_load(group):
+    with open(os.path.join(os.path.dirname(__file__), "credentials", "creds.json"), "r+") as jf:
+        creds = json.load(jf)
+    b = webdriver.Chrome()
+    b.get(f"https://portals.veracross.eu/asb/student/directory/{group.directory}")
+
+    b.find_element_by_id("username").send_keys(creds['username'])
+    b.find_element_by_id("password").send_keys(creds['password'])
+    b.find_element_by_id("recaptcha").click()
+    b.implicitly_wait(2)
+
+    while True:
+       try:
+           b.find_element_by_class_name("DirectoryEntries_LoadMoreEntriesButton").click()
+       except:
+           break
+    if not os.path.isdir(os.path.join(os.path.dirname(__file__), "data", group.name)):
+        os.mkdir(os.path.join(os.path.dirname(__file__), "data", group.name))
+    for entry in b.find_elements_by_class_name("directory-Entry"):
+        image_url = entry.find_element_by_class_name("directory-Entry_PersonPhoto--square").get_attribute("style").split('url("')[1][:-3]
+        student_name = entry.find_element_by_class_name("directory-Entry_Title").text
+        name_parts = re.split("(\(.*?\))", student_name)
+        if len(name_parts) == 3: student_name = name_parts[0].strip() + " " + name_parts[-1].strip()
+        else: student_name = name_parts[0]
+        urllib.request.urlretrieve(image_url, os.path.join(os.path.dirname(__file__), "data", group.name, f"{student_name}.jpg"))
+        print(f"Added {student_name} to {os.path.join(os.path.dirname(__file__), 'data', group.name)}")
+browser_load(Group.ELEVEN)
 
 def load_students():
     with open(os.path.join(os.path.dirname(os.path.realpath(__file__)),'students.json')) as jf:
@@ -71,9 +129,6 @@ def setup_applescript(script):
     p = Popen(['osascript'], stdin=PIPE, stdout=PIPE, stderr=PIPE, universal_newlines=True)
     stdout, stderr = p.communicate(script)
 
-    # with open('/Users/zackamiton/Desktop/test.txt', 'a+') as tf:
-    #     tf.write(str(PIPE)+'\n')
-
     return {
         "output": stdout,
         "error": stderr,
@@ -98,6 +153,6 @@ def trigger_script():
         studentCount = get_student_count(td['output'][34:].strip())
         setup_applescript(show_results.format(get_grade(td['output'][34:].strip()) + " has " + str(studentCount) + " students."))
 
-if __name__ == "__main__":
-    # trigger_script()
-    load_students()
+# if __name__ == "__main__":
+#     # trigger_script()
+#     load_students()

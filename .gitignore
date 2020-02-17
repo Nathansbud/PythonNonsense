@@ -8,6 +8,7 @@ AttendanceEmailer/students.py
 Verycross/staff/*
 Verycross/students/*
 Verycross/*.json
+Verycross/data/*
 
 credentials/
 creds/
@@ -23,3 +24,5 @@ CollegeStatus/schools.json
 
 FEPCrawler/output/
 BruteForce/data/staff.txt
+
+

@@ -55,9 +55,7 @@ def browser_load(group):
     for entry in b.find_elements_by_class_name("directory-Entry"):
         image_url = entry.find_element_by_class_name("directory-Entry_PersonPhoto--square").get_attribute("style").split('url("')[1][:-3]
         student_name = entry.find_element_by_class_name("directory-Entry_Title").text
-        name_parts = re.split("(\(.*?\))", student_name)
-        if len(name_parts) == 3: student_name = name_parts[0].strip() + " " + name_parts[-1].strip()
-        else: student_name = name_parts[0]
+        student_name = re.sub("(\(.*?\))", "", student_name).replace("  ", " ")
         urllib.request.urlretrieve(image_url, os.path.join(os.path.dirname(__file__), "data", group.name, f"{student_name}.jpg"))
         print(f"Added {student_name} to {os.path.join(os.path.dirname(__file__), 'data', group.name)}")
 browser_load(Group.ELEVEN)

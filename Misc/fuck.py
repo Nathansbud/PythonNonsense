@@ -1,0 +1,9 @@
+#!/usr/local/bin/python3.7
+import sys
+
+sys.argv = [l.lower() for l in sys.argv]
+if len(sys.argv) > 1:
+    if sys.argv[1] == "you": print("No, fuck you!")
+    elif sys.argv[1] == "me": print("I wouldn't dream of it!")
+else:
+    print("Yep.")

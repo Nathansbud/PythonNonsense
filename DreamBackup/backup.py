@@ -9,16 +9,12 @@ import re
 import difflib
 
 notes_doc = '1eVzxFeJaiTbvVvfxfNyJxdgjUqLMVnUwhDE4b0cbukw'
+notes_folder = "1VsLlAVHv1TYB2_vL3W-xSD7GMTfbCID3"
 
 def call_applescript(script):
     p = Popen(['osascript'], stdin=PIPE, stdout=PIPE, stderr=PIPE, universal_newlines=True)
     stdout, stderr = p.communicate(script)
-
-    return {
-            "output": stdout,
-            "error": stderr,
-            "code": p.returncode
-        }
+    return {"output": stdout, "error": stderr, "code": p.returncode}
 
 def applescript_get_note(note_name):
     applescript = f'''tell application "Notes"
@@ -124,10 +120,43 @@ def write_document(doc_id, content):
         docs_token = make_token(scope=SCOPES, cred_name="docs")
         service = build('docs', 'v1', credentials=docs_token)
         result = service.documents().batchUpdate(documentId=doc_id, body={'requests': requests}).execute()
-        with open(old_path, 'w+') as write_to:
-            write_to.write(post_list)
+        with open(old_path, 'w+') as write_to: write_to.write(post_list)
     else:
         print("No difference!")
 
+def backup_all():
+    DRIVE = ["https://www.googleapis.com/auth/drive"]
+    DOCS = ["https://www.googleapis.com/auth/documents"]
+
+    drive_token = make_token(scope=DRIVE, cred_name="drive")
+    docs_token = make_token(scope=DOCS, cred_name="docs")
+
+    get_note_ids, get_note_names, get_note_bodies = [f"""
+    tell application "Notes"
+        set noteNames to (the id of every {parameter} in folder 2)
+    end tell""" for parameter in ["id", "name", "body"]]
+    notes = {idx:{"name":name, "body":body} for idx, name, body in zip(call_applescript(get_note_ids)['output'].split(", "), call_applescript(get_note_names)['output'].split(", "), call_applescript(get_note_bodies)['output'].split(", "))}
+    drive = build('drive', 'v3', credentials=drive_token)
+    docs = build('docs', 'v1', credentials=docs_token)
+    for k, v in notes.items():
+        body = {
+            "name":v['name'],
+            "mimeType":"application/vnd.google-apps.document",
+            "parents":[notes_folder],
+        }
+        response = drive.files().create(body=body).execute()
+        requests = [
+            {
+                'insertText': {
+                    'location': {
+                        'index': 1,
+                    },
+                    'text': "".join(v['body'])
+                }
+            }
+        ]
+        response = docs.documents().batchUpdate(documentId=response['id'], body={'requests':requests}).execute()
+
 if __name__ == '__main__':
-    write_document(notes_doc, format_list(applescript_get_note('Dream Log')['output']))
+    backup_all()
+    # write_document(notes_doc, format_list(applescript_get_note('Dream Log')['output']))

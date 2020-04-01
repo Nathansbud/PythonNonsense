@@ -19,6 +19,7 @@
 
 ## Abandoned Projects
 - [AttendanceEmailer](AttendanceEmailer): Form-linked script to keep track of student attendance for school secretary 
+- [Instapoller][Instapoller]: Script to interface with Instagram polls; abandoned as poll text is not sticker
 - [Misc](Misc): Really, <i>really</i> nonsense work...
 
 

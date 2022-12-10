@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3.7
+#!/Users/zackamiton/Code/PythonNonsense/venv/bin/python
 import sys
 
 sys.argv = [l.lower() for l in sys.argv]
